@@ -1,7 +1,7 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/NavBar";
-
+import ItemListContainer from "./components/ItemListContainer";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <Router>
         <Navbar />
       </Router>
+      <ItemListContainer greeting="Productos..." />
     </div>
   );
 }
