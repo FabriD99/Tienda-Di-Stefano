@@ -3,26 +3,13 @@ import ItemList from "./ItemList";
 
 const ItemListContainer = (props) => {
   const [loading, setLoading] = useState(true);
-  const [resultado, setResultado] = useState([]);
-  const data = "./Data/productos.json";
 
   useEffect(() => {
-    const productCarrito = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(data);
-        rej("¡Error! No se pudieron cargar los productos");
-      }, 2000);
-    });
-
-    productCarrito
-      .then((result) => {
-        setResultado(result);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   });
+
   return (
     <>
       {loading ? (
@@ -33,7 +20,7 @@ const ItemListContainer = (props) => {
           <h4>Cargando productos...</h4>
         </div>
       ) : (
-        <ItemList productos={resultado} />
+        <ItemList />
       )}
     </>
   );
