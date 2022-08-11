@@ -1,42 +1,42 @@
 [
     {
         "id": "1",
-        "name": "Nombre producto",
+        "name": "Nombre producto 1",
         "descripcion": "Descripcion del producto",
-        "precio": 500,
-        "imagen":"Imagen",
+        "precio": 900,
+        "imagen":"burger.jpg",
         "stock": 10
     },
     {
         "id": "2",
-        "name": "Nombre producto",
+        "name": "Nombre producto 2",
         "descripcion": "Descripcion del producto",
-        "precio": 500,
-        "imagen":"Imagen",
+        "precio": 850,
+        "imagen":"burger.jpg",
         "stock": 5
     },
     {
         "id": "3",
-        "name": "Nombre producto",
+        "name": "Nombre producto 3",
         "descripcion": "Descripcion del producto",
-        "precio": 500,
-        "imagen":"Imagen",
+        "precio": 900,
+        "imagen":"burger.jpg",
         "stock": 8
     },
     {
         "id": "4",
-        "name": "Nombre producto",
+        "name": "Nombre producto 4",
         "descripcion": "Descripcion del producto",
-        "precio": 500,
-        "imagen":"Imagen",
+        "precio": 950,
+        "imagen":"burger.jpg",
         "stock": 12
     },
     {
         "id": "5",
-        "name": "Nombre producto",
+        "name": "Nombre producto 5",
         "descripcion": "Descripcion del producto",
-        "precio": 500,
-        "imagen":"Imagen",
+        "precio": 800,
+        "imagen":"burger.jpg",
         "stock": 20
     }
 ]
