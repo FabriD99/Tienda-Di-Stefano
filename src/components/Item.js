@@ -30,7 +30,6 @@ const Item = () => {
           <p className="card-text">${producto.precio}</p>
           <p className="card-text">Stock: {producto.stock}</p>
           <ItemCount stock={producto.stock} initial={0} />
-          <button className="btn btn-primary"> Agregar al carrito </button>
           <Link to={`/${producto.id}`} className="btn btn-primary">
             Ver más
           </Link>

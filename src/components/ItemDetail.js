@@ -1,9 +1,16 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import data from "./Data/productos.json";
 import ItemCount from "./ItemCount";
 const ItemDetail = () => {
   let { userId } = useParams();
+
+  const [addedToCart, setAddedToCart] = useState(false);
+
+  const onAddItems = () => {
+    setAddedToCart(true);
+  };
+
   const producto = data.find((producto) => producto.id === userId);
   return (
     <div>
@@ -17,10 +24,27 @@ const ItemDetail = () => {
       <p className="card-text">{producto.descripcion}</p>
       <p className="card-text">${producto.precio}</p>
       <p className="card-text">Stock: {producto.stock}</p>
-      <ItemCount stock={producto.stock} initial={0} />
-      <button className="btn btn-primary">
-        Agregar al carrito <i className="fas fa-cart-plus"></i>
-      </button>
+      {addedToCart ? (
+        <div className="bntAddedContainer">
+          <h6>Agregaste el producto al carrito</h6>
+          <Link to="/cart">
+            <button className="btn btn-primary" style={{ margin: "0 10px" }}>
+              Ir al carrito
+            </button>
+          </Link>
+          <Link to="/menu">
+            <button className="btn btn-primary" style={{ margin: "0 10px" }}>
+              Seguir Comprando
+            </button>
+          </Link>
+        </div>
+      ) : (
+        <ItemCount
+          stock={producto.stock}
+          initial={0}
+          onAddToCart={onAddItems}
+        />
+      )}
     </div>
   );
 };

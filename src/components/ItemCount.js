@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 
 const ItemCount = (props) => {
-  const { stock, initial } = props;
+  const { stock, initial, onAddToCart } = props;
+  const [stockCount, setStockCount] = useState(stock);
   const [count, setCount] = useState(initial);
+  const [cartCount, setCartCount] = useState(0);
+
   const handleAdd = () => {
     setCount(count + 1);
+    setStockCount(stockCount - 1);
   };
   const handleRemove = () => {
     setCount(count - 1);
+    setStockCount(stockCount + 1);
   };
+
+  const addToCart = () => {
+    if (count >= 1) {
+      setStockCount(stockCount - count);
+      onAddToCart();
+      setCartCount(cartCount + count);
+    }
+  };
+
   return (
     <div className="container">
       <div
@@ -36,6 +50,11 @@ const ItemCount = (props) => {
           style={{ marginLeft: "10px" }}
         >
           +
+        </button>
+      </div>
+      <div style={{ margin: "10px" }}>
+        <button className="btn btn-primary" onClick={addToCart}>
+          Agregar al carrito <i className="fas fa-cart-plus"></i>
         </button>
       </div>
     </div>
