@@ -15,14 +15,14 @@ const ItemDetail = () => {
   return (
     <div>
       <img
-        src={`./${producto.imagen}`}
+        src={`./${producto.image}`}
         alt={`Imagen producto ${producto.id}`}
         width="500px"
         style={{ borderRadius: "10px" }}
       />
       <h5 className="card-title">{producto.name}</h5>
-      <p className="card-text">{producto.descripcion}</p>
-      <p className="card-text">${producto.precio}</p>
+      <p className="card-text">{producto.description}</p>
+      <p className="card-text">${producto.price}</p>
       <p className="card-text">Stock: {producto.stock}</p>
       {addedToCart ? (
         <div className="bntAddedContainer">
