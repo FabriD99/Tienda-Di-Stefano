@@ -7,12 +7,12 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import Inicio from "./components/Inicio";
 import Cart from "./components/Cart.js";
 import CartContext from "./context/CartContext";
-import data from "./components/Data/productos.json";
 
 function App() {
+  const cartCount = 0;
   return (
     <div className="App">
-      <CartContext.Provider value={{ productos: data }}>
+      <CartContext.Provider value={cartCount}>
         <Router>
           <Navbar />
           <Routes>

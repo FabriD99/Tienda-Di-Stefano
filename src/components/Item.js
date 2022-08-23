@@ -1,14 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import ItemCount from "./ItemCount";
 import data from "./Data/productos.json";
 import { Link } from "react-router-dom";
-import { CartContext } from "../App";
 
 const Item = () => {
-
- const datosContext = useContext(CartContext);
-
- console.log(datosContext);
 
   return (
     <div

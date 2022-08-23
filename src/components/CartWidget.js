@@ -1,10 +1,13 @@
 import React from "react";
+import cartContext from "../hooks/cartContext";
 
-const CartWidget = (cartCount) => {
+const CartWidget = () => {
+  const cartCounter = cartContext();
+  
   return (
     <div className="cartWidget">
       <i className="bi bi-cart" />
-      <span className="badge rounded-pill bg-dark">0</span>
+      <span className="badge rounded-pill bg-dark">{cartCounter}</span>
     </div>
   );
 };

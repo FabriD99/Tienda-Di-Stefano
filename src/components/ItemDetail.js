@@ -2,16 +2,24 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import data from "./Data/productos.json";
 import ItemCount from "./ItemCount";
+import cartContext from "../hooks/cartContext";
+
 const ItemDetail = () => {
   let { userId } = useParams();
-
+  let cartCounter = cartContext();
+  
   const [addedToCart, setAddedToCart] = useState(false);
-
+  console.log(cartCounter)
+  
   const onAddItems = () => {
     setAddedToCart(true);
   };
+  
 
   const producto = data.find((producto) => producto.id === userId);
+  
+
+
   return (
     <div>
       <img
