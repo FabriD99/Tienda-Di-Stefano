@@ -6,13 +6,12 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Inicio from "./components/Inicio";
 import Cart from "./components/Cart.js";
-import CartContext from "./context/CartContext";
+import CartCustomContext from "./context/CartContext";
 
 function App() {
-  const cartCount = 0;
   return (
     <div className="App">
-      <CartContext.Provider value={cartCount}>
+      <CartCustomContext>
         <Router>
           <Navbar />
           <Routes>
@@ -22,7 +21,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </Router>
-      </CartContext.Provider>
+      </CartCustomContext>
     </div>
   );
 }

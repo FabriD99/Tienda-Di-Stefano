@@ -18,7 +18,7 @@ const ItemCount = (props) => {
   const addToCart = () => {
     if (count >= 1) {
       setStockCount(stockCount - count);
-      onAddToCart();
+      onAddToCart(count);
       setCartCount(cartCount + count);
     }
   };
@@ -53,7 +53,13 @@ const ItemCount = (props) => {
         </button>
       </div>
       <div style={{ margin: "10px" }}>
-        <button className="btn btn-primary" onClick={addToCart}>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            addToCart();
+            handleAdd();
+          }}
+        >
           Agregar al carrito <i className="fas fa-cart-plus"></i>
         </button>
       </div>

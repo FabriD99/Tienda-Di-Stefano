@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import data from "./Data/productos.json";
 import ItemCount from "./ItemCount";
-import cartContext from "../hooks/cartContext";
+import { CartContext } from "../context/CartContext";
 
 const ItemDetail = () => {
   let { userId } = useParams();
-  let cartCounter = cartContext();
-  
+
   const [addedToCart, setAddedToCart] = useState(false);
-  console.log(cartCounter)
-  
-  const onAddItems = () => {
+
+  const { addCartItem } = useContext(CartContext);
+
+  const onAddItems = (quantityToAdd) => {
+    addCartItem({ id, quantity: quantityToAdd });
     setAddedToCart(true);
   };
-  
 
   const producto = data.find((producto) => producto.id === userId);
-  
 
+  const id = producto.id;
 
   return (
     <div>
