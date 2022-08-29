@@ -12,13 +12,19 @@ const ItemDetail = () => {
   const { addCartItem } = useContext(CartContext);
 
   const onAddItems = (quantityToAdd) => {
-    addCartItem({ id, quantity: quantityToAdd });
+    addCartItem({
+      id,
+      quantity: quantityToAdd,
+      name,
+      image,
+      description,
+      price,
+    });
     setAddedToCart(true);
   };
 
   const producto = data.find((producto) => producto.id === userId);
-
-  const id = producto.id;
+  const { id, name, image, description, price } = producto;
 
   return (
     <div>
@@ -36,12 +42,12 @@ const ItemDetail = () => {
         <div className="bntAddedContainer">
           <h6>Agregaste el producto al carrito</h6>
           <Link to="/cart">
-            <button className="btn btn-primary" style={{ margin: "0 10px" }}>
+            <button className="btn btn-dark" style={{ margin: "0 10px" }}>
               Ir al carrito
             </button>
           </Link>
           <Link to="/menu">
-            <button className="btn btn-primary" style={{ margin: "0 10px" }}>
+            <button className="btn btn-dark" style={{ margin: "0 10px" }}>
               Seguir Comprando
             </button>
           </Link>

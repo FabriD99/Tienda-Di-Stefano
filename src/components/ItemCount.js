@@ -34,7 +34,7 @@ const ItemCount = (props) => {
       >
         <button
           type="button"
-          className="btn btn-outline-primary"
+          className="btn btn-outline-dark"
           onClick={handleRemove}
           disabled={count <= 0}
           style={{ marginRight: "10px" }}
@@ -44,7 +44,7 @@ const ItemCount = (props) => {
         <span style={{ fontSize: "1.5rem" }}>{count}</span>
         <button
           type="button"
-          className="btn btn-outline-primary"
+          className="btn btn-outline-dark"
           onClick={handleAdd}
           disabled={stock <= count}
           style={{ marginLeft: "10px" }}
@@ -54,7 +54,7 @@ const ItemCount = (props) => {
       </div>
       <div style={{ margin: "10px" }}>
         <button
-          className="btn btn-primary"
+          className="btn btn-dark"
           onClick={() => {
             addToCart();
             handleAdd();

@@ -31,7 +31,7 @@ const Item = () => {
           <p className="card-text" style={{ margin: "0" }}>
             Stock: {producto.stock}
           </p>
-          <Link to={`/${producto.id}`} className="btn btn-primary">
+          <Link to={`/${producto.id}`} className="btn btn-outline-dark">
             Ver más
           </Link>
         </div>
