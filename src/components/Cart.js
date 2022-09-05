@@ -2,16 +2,59 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import swal from "sweetalert";
+import { DB } from "./Data/DataFirebase";
+import {
+  doc,
+  setDoc,
+  collection,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
 
 export default function Cart() {
   const { cartData, removeFromCart, removeAll } = useContext(CartContext);
   let total = 0;
+
+  const createOrder = () => {
+    const itemsForDB = cartData.map((item) => ({
+      id: item.id,
+      title: item.name,
+      price: item.price,
+    }));
+    let order = {
+      buyer: {
+        name: "Pepe",
+        phone: "12432521",
+        email: "pepe@pepe.com",
+      },
+      items: itemsForDB,
+      total: total,
+    };
+
+    const createOrderInFirestore = async () => {
+      const newOrderRef = doc(collection(DB, "order"));
+      await setDoc(newOrderRef, order);
+      return newOrderRef;
+    };
+
+    createOrderInFirestore()
+      .then(
+        cartData.forEach(async (item) => {
+          const itemRef = doc(DB, "items", item.id);
+          await updateDoc(itemRef, {
+            stock: increment(-item.quantity),
+          });
+        })
+      )
+      .catch((err) => console.log(err));
+  };
 
   const finalizarCompra = () => {
     swal({
       title: "¡Gracias por tu compra!",
       icon: "success",
     });
+    createOrder();
     removeAll();
   };
 
@@ -35,8 +78,8 @@ export default function Cart() {
             <ul style={{ listStyle: "none" }}>
               <li>
                 <img
-                  src={"./burger.jpg"}
-                  style={{ width: "150px", margin: "0 20px" }}
+                  src={item.image}
+                  style={{ width: "100px", margin: "0 20px" }}
                   alt="Imagen producto"
                 ></img>
                 {`${item.name} - x${item.quantity} = $${subtotalItem}`}

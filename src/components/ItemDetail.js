@@ -40,7 +40,6 @@ const ItemDetail = () => {
             })
         );
       }
-      console.log("product =>", product);
       return product;
     });
   }, []);
@@ -50,7 +49,7 @@ const ItemDetail = () => {
   return (
     <div>
       <img
-        src={"./burger.jpg"}
+        src={product.image}
         alt={`Imagen product ${product.id}`}
         width="500px"
         style={{ borderRadius: "10px" }}

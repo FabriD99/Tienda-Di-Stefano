@@ -36,7 +36,6 @@ const Item = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
           }}
         >
           <>------------------------------------------------</>
@@ -50,11 +49,11 @@ const Item = () => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "20px",
+                  justifyContent: "space-between",
                 }}
               >
                 <img
-                  src="./burger.jpg"
+                  src={producto.image}
                   alt="Imagen producto"
                   width="200px"
                   style={{ borderRadius: "10px", margin: "10px" }}
@@ -80,11 +79,11 @@ const Item = () => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "20px",
+                  justifyContent: "space-between",
                 }}
               >
                 <img
-                  src="./papas.jpg"
+                  src={producto.image}
                   alt="Imagen producto"
                   width="200px"
                   style={{ borderRadius: "10px", margin: "10px" }}
