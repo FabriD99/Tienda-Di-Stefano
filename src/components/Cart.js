@@ -1,20 +1,19 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
-import swal from 'sweetalert';
-
+import swal from "sweetalert";
 
 export default function Cart() {
   const { cartData, removeFromCart, removeAll } = useContext(CartContext);
   let total = 0;
-  
-  const finalizarCompra = () =>{
+
+  const finalizarCompra = () => {
     swal({
       title: "¡Gracias por tu compra!",
       icon: "success",
     });
-    removeAll()
-  }
+    removeAll();
+  };
 
   return cartData.length === 0 ? (
     <div>
@@ -36,11 +35,11 @@ export default function Cart() {
             <ul style={{ listStyle: "none" }}>
               <li>
                 <img
-                  src={`./${item.image}`}
+                  src={"./burger.jpg"}
                   style={{ width: "150px", margin: "0 20px" }}
                   alt="Imagen producto"
                 ></img>
-                {`Producto ${item.id} - x${item.quantity} = $${subtotalItem}`}
+                {`${item.name} - x${item.quantity} = $${subtotalItem}`}
                 <button
                   id={item.id}
                   onClick={() => removeFromCart(item.id)}
@@ -64,7 +63,11 @@ export default function Cart() {
         >
           Vaciar carrito
         </button>
-        <button className="btn btn-dark" onClick={finalizarCompra} style={{ margin: "10px" }}>
+        <button
+          className="btn btn-dark"
+          onClick={finalizarCompra}
+          style={{ margin: "10px" }}
+        >
           Finalizar compra
         </button>
       </div>
