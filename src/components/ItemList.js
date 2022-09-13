@@ -1,10 +1,11 @@
 import React from "react";
 import Item from "./Item";
 
-const ItemList = () => {
+const ItemList = (props) => {
+  const { product } = props;
   return (
     <div className="container">
-      <Item />
+      <Item product={product} />
     </div>
   );
 };

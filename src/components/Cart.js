@@ -36,6 +36,13 @@ export default function Cart() {
       await setDoc(newOrderRef, order);
       return newOrderRef;
     };
+    createOrderInFirestore()
+      .then((result) =>
+        swal(
+          `Su pedido fue realizado correctamente. \n\nNumero de pedido: ${result.id}`
+        )
+      )
+      .catch((err) => console.log(err));
 
     createOrderInFirestore()
       .then(
@@ -61,7 +68,7 @@ export default function Cart() {
   return cartData.length === 0 ? (
     <div>
       <h3>Tu carrito está vacio</h3>
-      <Link to="/menu">
+      <Link to="/">
         <button className="btn btn-dark" style={{ margin: "0 10px" }}>
           Ir a comprar
         </button>

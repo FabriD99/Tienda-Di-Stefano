@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const NavBar = () => {
   return (
@@ -15,12 +16,18 @@ const NavBar = () => {
               <Link className="nav-link active" aria-current="page" to="/">
                 Inicio
               </Link>
-              <Link className="nav-link" to="/menu">
-                Menu
-              </Link>
-              <Link className="nav-link" to="/contacto">
-                Contacto
-              </Link>
+              <NavDropdown title="Categorias" id="basic-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/">
+                  Todos
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to="/categories/burger">
+                  Burgers
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/categories/extra">
+                  Extras
+                </NavDropdown.Item>
+              </NavDropdown>
               <Link className="nav-link" to="/cart">
                 <CartWidget />
               </Link>

@@ -6,7 +6,7 @@ import { DB } from "./Data/DataFirebase";
 import { collection, getDocs } from "firebase/firestore";
 
 const ItemDetail = () => {
-  let { userId } = useParams();
+  let { productId } = useParams();
 
   const [addedToCart, setAddedToCart] = useState(false);
   const [product, setProduct] = useState([]);
@@ -36,7 +36,7 @@ const ItemDetail = () => {
               ...doc.data(),
             }))
             .find((doc) => {
-              return doc.id === userId;
+              return doc.id === productId;
             })
         );
       }
@@ -66,7 +66,7 @@ const ItemDetail = () => {
               Ir al carrito
             </button>
           </Link>
-          <Link to="/menu">
+          <Link to="/">
             <button className="btn btn-dark" style={{ margin: "0 10px" }}>
               Seguir Comprando
             </button>

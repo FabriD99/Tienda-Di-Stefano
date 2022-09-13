@@ -1,8 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { DB } from "./Data/DataFirebase";
+import { collection, getDocs } from "firebase/firestore";
 
-const Item = (props) => {
-  const { product } = props;
+const Categories = () => {
+  const [product, setProduct] = useState([]);
+
+  let { category } = useParams();
+
+  useEffect(() => {
+    const itemsCollection = collection(DB, "items");
+    getDocs(itemsCollection).then((snapshot) => {
+      if (snapshot) {
+        setProduct(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+        );
+      }
+      return product;
+    });
+  }, [product]);
+  console.log("product =>", product);
+
+  const productByCategory = () => {
+    if (product.category === category) {
+        return product;
+    }
+    console.log('productByCategory =>', product)
+  };
+  productByCategory()
 
   return (
     <>
@@ -25,7 +53,7 @@ const Item = (props) => {
           <h3>Burgers</h3>
           <>------------------------------------------------</>
           {product.map((producto) =>
-            producto.category === "burger" ? (
+            category === "burger" ? (
               <div
                 className="col"
                 key={producto.id}
@@ -55,7 +83,7 @@ const Item = (props) => {
           <h3>Extras</h3>
           <>------------------------------------------------</>
           {product.map((producto) =>
-            producto.category === "extra" ? (
+            category === "extra" ? (
               <div
                 className="col"
                 key={producto.id}
@@ -87,4 +115,4 @@ const Item = (props) => {
   );
 };
 
-export default Item;
+export default Categories;
