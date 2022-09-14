@@ -22,15 +22,8 @@ const Categories = () => {
       return product;
     });
   }, [product]);
-  console.log("product =>", product);
 
-  const productByCategory = () => {
-    if (product.category === category) {
-        return product;
-    }
-    console.log('productByCategory =>', product)
-  };
-  productByCategory()
+  const productByCategory = product.find((producto) => producto.category === category)
 
   return (
     <>
@@ -50,65 +43,33 @@ const Categories = () => {
           }}
         >
           <>------------------------------------------------</>
-          <h3>Burgers</h3>
+          <h3>{category}</h3>
           <>------------------------------------------------</>
-          {product.map((producto) =>
-            category === "burger" ? (
-              <div
-                className="col"
-                key={producto.id}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <img
-                  src={producto.image}
-                  alt="Imagen producto"
-                  width="200px"
-                  style={{ borderRadius: "10px", margin: "10px" }}
-                />
-                <h5 className="card-title">{producto.name}</h5>
-                <p className="card-text" style={{ margin: "0" }}>
-                  ${producto.price}
-                </p>
-                <Link to={`/${producto.id}`} className="btn btn-outline-dark">
-                  Ver más
-                </Link>
-              </div>
-            ) : null
-          )}
-          <>------------------------------------------------</>
-          <h3>Extras</h3>
-          <>------------------------------------------------</>
-          {product.map((producto) =>
-            category === "extra" ? (
-              <div
-                className="col"
-                key={producto.id}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <img
-                  src={producto.image}
-                  alt="Imagen producto"
-                  width="200px"
-                  style={{ borderRadius: "10px", margin: "10px" }}
-                />
-                <h5 className="card-title">{producto.name}</h5>
-                <p className="card-text" style={{ margin: "0" }}>
-                  ${producto.price}
-                </p>
-                <Link to={`/${producto.id}`} className="btn btn-outline-dark">
-                  Ver más
-                </Link>
-              </div>
-            ) : null
-          )}
+          {productByCategory.map((producto) => (
+            <div
+              className="col"
+              key={producto.id}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <img
+                src={producto.image}
+                alt="Imagen producto"
+                width="200px"
+                style={{ borderRadius: "10px", margin: "10px" }}
+              />
+              <h5 className="card-title">{producto.name}</h5>
+              <p className="card-text" style={{ margin: "0" }}>
+                ${producto.price}
+              </p>
+              <Link to={`/${producto.id}`} className="btn btn-outline-dark">
+                Ver más
+              </Link>
+            </div>
+          ))}
         </div>
       )}
     </>
