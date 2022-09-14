@@ -23,7 +23,7 @@ const Categories = () => {
     });
   }, [product]);
 
-  const productByCategory = product.find((producto) => producto.category === category)
+  const productByCategory = product.filter((producto) => producto.category === category)
 
   return (
     <>
@@ -43,7 +43,7 @@ const Categories = () => {
           }}
         >
           <>------------------------------------------------</>
-          <h3>{category}</h3>
+          <h3>{category.toUpperCase()}</h3>
           <>------------------------------------------------</>
           {productByCategory.map((producto) => (
             <div
